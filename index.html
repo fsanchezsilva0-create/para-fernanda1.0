@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Para Fernanda 💖</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -19,8 +19,45 @@
       height: 100vh;
       text-align: center;
       overflow: hidden;
-      position: relative;
     }
+
+    /* Fondo que cambia */
+    .background-slideshow {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background-size: cover;
+      background-position: center;
+      animation: slideshow 12s infinite;
+      filter: blur(8px) brightness(0.7);
+      transition: background-image 2s ease-in-out;
+    }
+
+    @keyframes slideshow {
+      0%   { background-image: url('451568899_1489112528644541_48643615767597491_n..webp'); }
+      50%  { background-image: url('482657691_18039791780605015_4915882392441533936_n..webp'); }
+      100% { background-image: url('451568899_1489112528644541_48643615767597491_n..webp'); }
+    }
+
+    /* Imágenes flotantes */
+    .floating-img {
+      position: absolute;
+      width: 80px;
+      opacity: 0.4;
+      border-radius: 20px;
+      animation: floatAround 20s infinite linear;
+    }
+
+    @keyframes floatAround {
+      0%   { transform: translate(0, 0) rotate(0deg); }
+      25%  { transform: translate(100px, -200px) rotate(45deg); }
+      50%  { transform: translate(200px, 0px) rotate(90deg); }
+      75%  { transform: translate(100px, 200px) rotate(135deg); }
+      100% { transform: translate(0, 0) rotate(360deg); }
+    }
+
     .card {
       background: white;
       border-radius: 30px;
@@ -28,19 +65,21 @@
       max-width: 450px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
       animation: fadeIn 1s ease;
-      position: relative;
-      z-index: 10;
+      z-index: 1;
     }
+
     h1 {
       font-family: 'Pacifico', cursive;
       font-size: 2.5em;
       color: #ff4f81;
       margin-bottom: 10px;
     }
+
     p {
       font-size: 1.3em;
       margin: 20px 0;
     }
+
     button {
       background-color: #ff4f81;
       color: white;
@@ -52,16 +91,20 @@
       margin: 10px;
       transition: background 0.3s;
     }
+
     button:hover {
       background-color: #d63b6c;
     }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: scale(0.9); }
       to { opacity: 1; transform: scale(1); }
     }
+
     .hidden {
       display: none;
     }
+
     .heart {
       position: absolute;
       width: 20px;
@@ -70,7 +113,9 @@
       transform: rotate(45deg);
       animation: float 5s infinite;
       opacity: 0.6;
+      z-index: 0;
     }
+
     .heart:before,
     .heart:after {
       content: "";
@@ -80,18 +125,22 @@
       background: #ff4f81;
       border-radius: 50%;
     }
+
     .heart:before {
       top: -10px;
       left: 0;
     }
+
     .heart:after {
       left: -10px;
       top: 0;
     }
+
     @keyframes float {
       0% { transform: translateY(0) rotate(45deg); opacity: 0.6; }
       100% { transform: translateY(-600px) rotate(45deg); opacity: 0; }
     }
+
     .riddle-input {
       padding: 10px;
       width: 80%;
@@ -101,111 +150,58 @@
       margin-top: 10px;
     }
 
-    /* Animación corazón con flecha */
-    .heart-arrow {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 120px;
-      height: 120px;
-      transform: translate(-50%, -50%);
-      z-index: 5;
+    .heart-arrow-container {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 20px auto;
       animation: pulse 2s infinite;
     }
 
-    /* Corazón */
-    .heart-shape {
-      position: relative;
-      width: 60px;
-      height: 60px;
-      background: #ff4f81;
-      transform: rotate(-45deg);
-      border-radius: 60px 60px 0 0;
-      box-shadow: 0 0 15px #ff4f81aa;
-      margin: 0 auto;
-      animation: beat 1.5s infinite;
-    }
-    .heart-shape::before,
-    .heart-shape::after {
-      content: "";
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      background: #ff4f81;
-      border-radius: 50%;
-      box-shadow: 0 0 15px #ff4f81aa;
-    }
-    .heart-shape::before {
-      top: -30px;
-      left: 0;
-    }
-    .heart-shape::after {
-      top: 0;
-      left: 30px;
-    }
-
-    /* Flecha */
-    .arrow {
-      position: absolute;
-      top: 55%;
-      left: 15%;
-      width: 120px;
-      height: 6px;
-      background: #ff4f81;
-      transform: rotate(45deg);
-      box-shadow: 0 0 8px #ff4f81aa;
-      animation: arrow-move 2s infinite;
-    }
-    .arrow::before {
-      content: "";
-      position: absolute;
-      right: 0;
-      top: -7px;
-      width: 15px;
-      height: 15px;
-      border-top: 6px solid transparent;
-      border-bottom: 6px solid transparent;
-      border-left: 15px solid #ff4f81;
-      filter: drop-shadow(0 0 4px #ff4f81aa);
-    }
-    .arrow::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 15px;
-      height: 15px;
-      border-radius: 50% 50% 50% 0;
-      background: #ff4f81;
-      filter: drop-shadow(0 0 4px #ff4f81aa);
-    }
-
     @keyframes pulse {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); }
-      50% { transform: translate(-50%, -50%) scale(1.15); }
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
     }
-    @keyframes beat {
-      0%, 100% { transform: rotate(-45deg) scale(1); }
-      50% { transform: rotate(-45deg) scale(1.2); }
+
+    .sparkle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: white;
+      border-radius: 50%;
+      animation: sparkle 1s ease-out forwards;
+      z-index: 3;
     }
-    @keyframes arrow-move {
-      0%, 100% { transform: rotate(45deg) translateX(0); }
-      50% { transform: rotate(45deg) translateX(10px); }
+
+    @keyframes sparkle {
+      0% { transform: scale(0.5); opacity: 1; }
+      100% { transform: scale(2); opacity: 0; }
     }
   </style>
 </head>
 <body>
-  <audio id="bgMusic" loop>
-    <source src="ConmigoSiempre.m4a" type="audio/mp4" />
-  </audio>
 
+  <!-- Fondo animado -->
+  <div class="background-slideshow"></div>
+
+  <!-- Imágenes flotantes -->
+  <img src="451568899_1489112528644541_48643615767597491_n..webp" class="floating-img" style="top: 10%; left: 5%; animation-delay: 0s;">
+  <img src="482657691_18039791780605015_4915882392441533936_n..webp" class="floating-img" style="top: 30%; left: 80%; animation-delay: 5s;">
+  <img src="451568899_1489112528644541_48643615767597491_n..webp" class="floating-img" style="top: 60%; left: 20%; animation-delay: 10s;">
+  <img src="482657691_18039791780605015_4915882392441533936_n..webp" class="floating-img" style="top: 80%; left: 70%; animation-delay: 15s;">
+
+  <!-- Corazones flotantes -->
   <div class="heart" style="top: 80%; left: 10%; animation-delay: 0s;"></div>
   <div class="heart" style="top: 85%; left: 30%; animation-delay: 1s;"></div>
   <div class="heart" style="top: 90%; left: 50%; animation-delay: 2s;"></div>
   <div class="heart" style="top: 95%; left: 70%; animation-delay: 3s;"></div>
   <div class="heart" style="top: 100%; left: 90%; animation-delay: 4s;"></div>
 
+  <!-- Música -->
+  <audio id="bgMusic" loop>
+    <source src="ConmigoSiempre.m4a" type="audio/mp4">
+  </audio>
+
+  <!-- Tarjetas -->
   <div class="card" id="step1">
     <h1>Hola Fernanda 💕</h1>
     <p>Hay algo que llevo tiempo queriendo decirte...</p>
@@ -215,14 +211,14 @@
   <div class="card hidden" id="step2">
     <p>Antes de decirlo... resuelve este acertijo: 🔐</p>
     <p><strong>No soy un ser vivo, pero crezco. No tengo pulmones, pero necesito aire. ¿Qué soy?</strong></p>
-    <input class="riddle-input" id="riddle1" placeholder="Tu respuesta..." />
+    <input class="riddle-input" id="riddle1" placeholder="Tu respuesta...">
     <button onclick="checkRiddle('riddle1', 'fuego', 'step2', 'step3')">Responder 🔍</button>
   </div>
 
   <div class="card hidden" id="step3">
     <p>Muy bien, uno más 😄</p>
     <p><strong>Cuanto más me quitas, más grande soy. ¿Qué soy?</strong></p>
-    <input class="riddle-input" id="riddle2" placeholder="Tu respuesta..." />
+    <input class="riddle-input" id="riddle2" placeholder="Tu respuesta...">
     <button onclick="checkRiddle('riddle2', 'agujero', 'step3', 'step4')">Siguiente 🧠</button>
   </div>
 
@@ -234,56 +230,44 @@
   </div>
 
   <div class="card hidden" id="step5">
-    <h1>¿Quieres ser mi novia? 🥺❤️</h1>
-    
-    <!-- Corazón con flecha -->
-    <div class="heart-arrow" aria-hidden="true">
-      <div class="heart-shape"></div>
-      <div class="arrow"></div>
+    <div class="heart-arrow-container">
+      <svg viewBox="0 0 200 200" class="heart-arrow-svg">
+        <path d="M100 170 L40 110 A30 30 0 1 1 100 60 A30 30 0 1 1 160 110 Z"
+          fill="#ff4f81" stroke="#d63b6c" stroke-width="2" />
+      </svg>
     </div>
-
-    <button onclick="respuesta(true)">¡Sí, quiero! 💘</button>
+    <h1>¿Quieres ser mi novia? 🥺❤️</h1>
+    <button onclick="respuesta(true); showSparkles()">¡Sí, quiero! 💘</button>
     <button onclick="respuesta(false)">Ay, no sé... 🙈</button>
   </div>
 
   <div class="card hidden" id="final">
     <h1 id="respuestaTexto"></h1>
-    <p>Gracias por leer esto, Fernanda 💖<br />Te prometo que pondré lo mejor de mí cada día 💫</p>
+    <p>Gracias por leer esto, Fernanda 💖<br>Te prometo que pondré lo mejor de mí cada día 💫</p>
   </div>
 
+  <!-- Lógica -->
   <script>
     const music = document.getElementById('bgMusic');
-    let step = 1;
+    music.currentTime = 1380;
+    music.play().catch(() => {
+      document.addEventListener('click', () => {
+        music.currentTime = 1380;
+        music.play();
+      }, { once: true });
+    });
 
     function nextStep() {
       document.getElementById(`step${step}`).classList.add('hidden');
       step++;
       document.getElementById(`step${step}`).classList.remove('hidden');
-
-      // Solo iniciar la música cuando aparece step5
-      if (step === 5) {
-        music.currentTime = 1380; // empieza desde el minuto 23
-        music.play().catch(() => {
-          // Si no puede sonar por política de autoplay, esperar click para iniciar
-          document.addEventListener(
-            'click',
-            () => {
-              music.currentTime = 1380;
-              music.play();
-            },
-            { once: true }
-          );
-        });
-      }
     }
 
     function respuesta(si) {
-      document.getElementById(`step${step}`).classList.add('hidden');
-      document.getElementById('final').classList.remove('hidden');
-      document.getElementById('respuestaTexto').innerText = si
-        ? '¡Sabía que dirías que sí! 💍✨'
-        : 'No importa la respuesta, Fernanda, tú sigues siendo alguien muy especial para mí 💫';
-      music.pause();
+      document.getElementById(`step${step}`).classList.add("hidden");
+      document.getElementById("final").classList.remove("hidden");
+      document.getElementById("respuestaTexto").innerText =
+        si ? "¡Sabía que dirías que sí! 💍✨" : "No importa la respuesta, Fernanda, tú sigues siendo alguien muy especial para mí 💫";
     }
 
     function checkRiddle(inputId, correctAnswer, currentStepId, nextStepId) {
@@ -293,10 +277,23 @@
         document.getElementById(nextStepId).classList.remove('hidden');
         step++;
       } else {
-        alert('Mmm... inténtalo de nuevo. ¡Tú puedes! 💡');
+        alert("Mmm... inténtalo de nuevo. ¡Tú puedes! 💡");
       }
     }
+
+    function showSparkles() {
+      for (let i = 0; i < 30; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.classList.add('sparkle');
+        sparkle.style.left = Math.random() * 100 + 'vw';
+        sparkle.style.top = Math.random() * 100 + 'vh';
+        sparkle.style.animationDelay = (Math.random() * 0.5) + 's';
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 1000);
+      }
+    }
+
+    let step = 1;
   </script>
 </body>
 </html>
-
