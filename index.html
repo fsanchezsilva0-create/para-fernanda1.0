@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Fernanda 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom right, #ffdde1, #ee9ca7);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+    .card {
+      background: white;
+      border-radius: 30px;
+      padding: 40px 30px;
+      max-width: 450px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 1s ease;
+    }
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.5em;
+      color: #ff4f81;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.3em;
+      margin: 20px 0;
+    }
+    button {
+      background-color: #ff4f81;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-size: 1em;
+      cursor: pointer;
+      margin: 10px;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #d63b6c;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .hidden {
+      display: none;
+    }
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff4f81;
+      transform: rotate(45deg);
+      animation: float 5s infinite;
+      opacity: 0.6;
+    }
+    .heart:before,
+    .heart:after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff4f81;
+      border-radius: 50%;
+    }
+    .heart:before {
+      top: -10px;
+      left: 0;
+    }
+    .heart:after {
+      left: -10px;
+      top: 0;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) rotate(45deg); opacity: 0.6; }
+      100% { transform: translateY(-600px) rotate(45deg); opacity: 0; }
+    }
+    .riddle-input {
+      padding: 10px;
+      width: 80%;
+      font-size: 1em;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <audio id="bgMusic" loop>
+    <source src="ConmigoSiempre.m4a" type="audio/mp4">
+  </audio>
+
+  <script>
+    const music = document.getElementById('bgMusic');
+    music.currentTime = 1380; // Minuto 23
+    music.play().catch(() => {
+      document.addEventListener('click', () => {
+        music.currentTime = 1380;
+        music.play();
+      }, { once: true });
+    });
+  </script>
+
+  <div class="heart" style="top: 80%; left: 10%; animation-delay: 0s;"></div>
+  <div class="heart" style="top: 85%; left: 30%; animation-delay: 1s;"></div>
+  <div class="heart" style="top: 90%; left: 50%; animation-delay: 2s;"></div>
+  <div class="heart" style="top: 95%; left: 70%; animation-delay: 3s;"></div>
+  <div class="heart" style="top: 100%; left: 90%; animation-delay: 4s;"></div>
+
+  <div class="card" id="step1">
+    <h1>Hola Fernanda 💕</h1>
+    <p>Hay algo que llevo tiempo queriendo decirte...</p>
+    <button onclick="nextStep()">Siguiente 💌</button>
+  </div>
+
+  <div class="card hidden" id="step2">
+    <p>Antes de decirlo... resuelve este acertijo: 🔐</p>
+    <p><strong>No soy un ser vivo, pero crezco. No tengo pulmones, pero necesito aire. ¿Qué soy?</strong></p>
+    <input class="riddle-input" id="riddle1" placeholder="Tu respuesta...">
+    <button onclick="checkRiddle('riddle1', 'fuego', 'step2', 'step3')">Responder 🔍</button>
+  </div>
+
+  <div class="card hidden" id="step3">
+    <p>Muy bien, uno más 😄</p>
+    <p><strong>Cuanto más me quitas, más grande soy. ¿Qué soy?</strong></p>
+    <input class="riddle-input" id="riddle2" placeholder="Tu respuesta...">
+    <button onclick="checkRiddle('riddle2', 'agujero', 'step3', 'step4')">Siguiente 🧠</button>
+  </div>
+
+  <div class="card hidden" id="step4">
+    <p>¡Eres muy lista! Ahora sí...</p>
+    <p>Desde que te conocí, todo es más bonito. Tu risa, tu forma de ser... me encantas 🌸</p>
+    <p>No quiero seguir guardando esto solo para mí...</p>
+    <button onclick="nextStep()">Siguiente 💖</button>
+  </div>
+
+  <div class="card hidden" id="step5">
+    <h1>¿Quieres ser mi novia? 🥺❤️</h1>
+    <button onclick="respuesta(true)">¡Sí, quiero! 💘</button>
+    <button onclick="respuesta(false)">Ay, no sé... 🙈</button>
+  </div>
+
+  <div class="card hidden" id="final">
+    <h1 id="respuestaTexto"></h1>
+    <p>Gracias por leer esto, Fernanda 💖<br>Te prometo que pondré lo mejor de mí cada día 💫</p>
+  </div>
+
+  <script>
+    let step = 1;
+
+    function nextStep() {
+      document.getElementById(`step${step}`).classList.add('hidden');
+      step++;
+      document.getElementById(`step${step}`).classList.remove('hidden');
+    }
+
+    function respuesta(si) {
+      document.getElementById(`step${step}`).classList.add("hidden");
+      document.getElementById("final").classList.remove("hidden");
+      document.getElementById("respuestaTexto").innerText =
+        si ? "¡Sabía que dirías que sí! 💍✨" : "No importa la respuesta, Fernanda, tú sigues siendo alguien muy especial para mí 💫";
+    }
+
+    function checkRiddle(inputId, correctAnswer, currentStepId, nextStepId) {
+      const input = document.getElementById(inputId).value.trim().toLowerCase();
+      if (input === correctAnswer) {
+        document.getElementById(currentStepId).classList.add('hidden');
+        document.getElementById(nextStepId).classList.remove('hidden');
+        step++;
+      } else {
+        alert("Mmm... inténtalo de nuevo. ¡Tú puedes! 💡");
+      }
+    }
+  </script>
+</body>
+</html>
