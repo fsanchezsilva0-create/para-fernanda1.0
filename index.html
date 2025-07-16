@@ -1,299 +1,226 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Para Fernanda 💖</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🎂 Sorpresa de Cumpleaños</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(to bottom right, #ffdde1, #ee9ca7);
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
+      background: linear-gradient(#ffe0ec, #ffe4e1);
       overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Georgia', serif;
+      color: #5a2a3b;
     }
 
-    /* Fondo que cambia */
-    .background-slideshow {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-      background-size: cover;
-      background-position: center;
-      animation: slideshow 12s infinite;
-      filter: blur(8px) brightness(0.7);
-      transition: background-image 2s ease-in-out;
-    }
-
-    @keyframes slideshow {
-      0%   { background-image: url('451568899_1489112528644541_48643615767597491_n..webp'); }
-      50%  { background-image: url('482657691_18039791780605015_4915882392441533936_n..webp'); }
-      100% { background-image: url('451568899_1489112528644541_48643615767597491_n..webp'); }
-    }
-
-    /* Imágenes flotantes */
-    .floating-img {
-      position: absolute;
-      width: 80px;
-      opacity: 0.4;
+    .container {
+      text-align: center;
+      position: relative;
+      max-width: 400px;
+      padding: 30px 25px;
+      background: #fff8f9;
       border-radius: 20px;
-      animation: floatAround 20s infinite linear;
+      box-shadow: 0 10px 25px rgba(90, 42, 59, 0.2);
+      border: 1px solid #d6a4b5;
     }
 
-    @keyframes floatAround {
-      0%   { transform: translate(0, 0) rotate(0deg); }
-      25%  { transform: translate(100px, -200px) rotate(45deg); }
-      50%  { transform: translate(200px, 0px) rotate(90deg); }
-      75%  { transform: translate(100px, 200px) rotate(135deg); }
-      100% { transform: translate(0, 0) rotate(360deg); }
+    .envelope {
+      width: 300px;
+      height: 200px;
+      background: #b74970;
+      position: relative;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(90, 42, 59, 0.3);
+      transition: transform 1s ease;
+      margin: 0 auto 25px auto;
     }
 
-    .card {
-      background: white;
-      border-radius: 30px;
-      padding: 40px 30px;
-      max-width: 450px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-      animation: fadeIn 1s ease;
-      z-index: 1;
+    .envelope:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-width: 100px 150px 0 150px;
+      border-style: solid;
+      border-color: #e7a3b7 transparent transparent transparent;
     }
 
-    h1 {
-      font-family: 'Pacifico', cursive;
-      font-size: 2.5em;
-      color: #ff4f81;
-      margin-bottom: 10px;
+    .message {
+      display: none;
+      padding: 20px 15px;
+      border-radius: 15px;
+      animation: fadeIn 1s forwards;
+      margin-top: 10px;
+      background-color: #f6d8e1;
+      border: 1px solid #d6a4b5;
+      box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.6),
+                  inset -2px -2px 5px rgba(214, 164, 181, 0.4);
+      text-align: justify;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      font-style: italic;
+      letter-spacing: 0.03em;
     }
 
-    p {
-      font-size: 1.3em;
-      margin: 20px 0;
+    .message h1 {
+      text-align: center;
+      color: #8b2e50;
+      font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px #d6a4b5;
     }
 
     button {
-      background-color: #ff4f81;
+      margin-top: 10px;
+      padding: 0.8rem 1.8rem;
+      font-size: 1rem;
+      background-color: #b74970;
       color: white;
       border: none;
-      padding: 15px 30px;
-      border-radius: 50px;
-      font-size: 1em;
+      border-radius: 25px;
       cursor: pointer;
-      margin: 10px;
-      transition: background 0.3s;
+      box-shadow: 0 5px 15px rgba(90, 42, 59, 0.2);
+      transition: background-color 0.3s;
+      font-family: 'Georgia', serif;
+      font-weight: 600;
     }
 
     button:hover {
-      background-color: #d63b6c;
+      background-color: #8b2e50;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
+      from { opacity: 0; transform: translateY(-15px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .hidden {
-      display: none;
-    }
-
-    .heart {
+    .balloon {
       position: absolute;
-      width: 20px;
-      height: 20px;
-      background: #ff4f81;
-      transform: rotate(45deg);
-      animation: float 5s infinite;
-      opacity: 0.6;
-      z-index: 0;
+      bottom: -100px;
+      width: 40px;
+      height: 60px;
+      background-color: red;
+      border-radius: 50% 50% 45% 45%;
+      animation: floatUp 5s infinite ease-in;
     }
 
-    .heart:before,
-    .heart:after {
-      content: "";
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: #ff4f81;
-      border-radius: 50%;
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-800px); opacity: 0; }
     }
 
-    .heart:before {
-      top: -10px;
-      left: 0;
-    }
-
-    .heart:after {
-      left: -10px;
+    canvas {
+      position: fixed;
       top: 0;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0) rotate(45deg); opacity: 0.6; }
-      100% { transform: translateY(-600px) rotate(45deg); opacity: 0; }
-    }
-
-    .riddle-input {
-      padding: 10px;
-      width: 80%;
-      font-size: 1em;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      margin-top: 10px;
-    }
-
-    .heart-arrow-container {
-      width: 200px;
-      height: 200px;
-      margin: 0 auto 20px auto;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-    }
-
-    .sparkle {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: white;
-      border-radius: 50%;
-      animation: sparkle 1s ease-out forwards;
-      z-index: 3;
-    }
-
-    @keyframes sparkle {
-      0% { transform: scale(0.5); opacity: 1; }
-      100% { transform: scale(2); opacity: 0; }
+      left: 0;
+      pointer-events: none;
     }
   </style>
 </head>
 <body>
 
-  <!-- Fondo animado -->
-  <div class="background-slideshow"></div>
+<div class="container">
+  <div class="envelope" id="sobre"></div>
+  <button onclick="abrirSobre()">🎁 Presiona para recibir tu sorpresa</button>
+  <div class="message" id="mensaje">
+    <h1>¡Feliz cumpleaños, mi cielo! 💖</h1>
+    <p>
+      Hoy no solo cumples años… también te haces más irresistible
+      (¡aunque ya estabas en niveles peligrosos para mi corazón! ❤️‍🔥)
 
-  <!-- Imágenes flotantes -->
-  <img src="451568899_1489112528644541_48643615767597491_n..webp" class="floating-img" style="top: 10%; left: 5%; animation-delay: 0s;">
-  <img src="482657691_18039791780605015_4915882392441533936_n..webp" class="floating-img" style="top: 30%; left: 80%; animation-delay: 5s;">
-  <img src="451568899_1489112528644541_48643615767597491_n..webp" class="floating-img" style="top: 60%; left: 20%; animation-delay: 10s;">
-  <img src="482657691_18039791780605015_4915882392441533936_n..webp" class="floating-img" style="top: 80%; left: 70%; animation-delay: 15s;">
+      Ojalá la vida te consienta tanto como yo lo haría si estuviera contigo ahora mismo.
 
-  <!-- Corazones flotantes -->
-  <div class="heart" style="top: 80%; left: 10%; animation-delay: 0s;"></div>
-  <div class="heart" style="top: 85%; left: 30%; animation-delay: 1s;"></div>
-  <div class="heart" style="top: 90%; left: 50%; animation-delay: 2s;"></div>
-  <div class="heart" style="top: 95%; left: 70%; animation-delay: 3s;"></div>
-  <div class="heart" style="top: 100%; left: 90%; animation-delay: 4s;"></div>
+      Prepárate, porque este nuevo año puede venir con muchas sorpresas…
+      y quién sabe, tal vez una de ellas lleve mi nombre. 😉
 
-  <!-- Música -->
-  <audio id="bgMusic" loop>
-    <source src="ConmigoSiempre.m4a" type="audio/mp4">
-  </audio>
-
-  <!-- Tarjetas -->
-  <div class="card" id="step1">
-    <h1>Hola Fernanda 💕</h1>
-    <p>Hay algo que llevo tiempo queriendo decirte...</p>
-    <button onclick="nextStep()">Siguiente 💌</button>
+      Disfruta tu día, pero prométeme que me vas a guardar un pedacito de pastel…
+      y otro de tu atención. 💋
+    </p>
   </div>
+</div>
 
-  <div class="card hidden" id="step2">
-    <p>Antes de decirlo... resuelve este acertijo: 🔐</p>
-    <p><strong>No soy un ser vivo, pero crezco. No tengo pulmones, pero necesito aire. ¿Qué soy?</strong></p>
-    <input class="riddle-input" id="riddle1" placeholder="Tu respuesta...">
-    <button onclick="checkRiddle('riddle1', 'fuego', 'step2', 'step3')">Responder 🔍</button>
-  </div>
+<canvas id="confetti-canvas"></canvas>
 
-  <div class="card hidden" id="step3">
-    <p>Muy bien, uno más 😄</p>
-    <p><strong>Cuanto más me quitas, más grande soy. ¿Qué soy?</strong></p>
-    <input class="riddle-input" id="riddle2" placeholder="Tu respuesta...">
-    <button onclick="checkRiddle('riddle2', 'agujero', 'step3', 'step4')">Siguiente 🧠</button>
-  </div>
+<script>
+  function abrirSobre() {
+    const sobre = document.getElementById('sobre');
+    const mensaje = document.getElementById('mensaje');
 
-  <div class="card hidden" id="step4">
-    <p>¡Eres muy lista! Ahora sí...</p>
-    <p>Desde que te conocí, todo es más bonito. Tu risa, tu forma de ser... me encantas 🌸</p>
-    <p>No quiero seguir guardando esto solo para mí...</p>
-    <button onclick="nextStep()">Siguiente 💖</button>
-  </div>
+    sobre.style.transform = 'rotateX(180deg)';
+    setTimeout(() => {
+      mensaje.style.display = 'block';
+    }, 1000);
 
-  <div class="card hidden" id="step5">
-    <div class="heart-arrow-container">
-      <svg viewBox="0 0 200 200" class="heart-arrow-svg">
-        <path d="M100 170 L40 110 A30 30 0 1 1 100 60 A30 30 0 1 1 160 110 Z"
-          fill="#ff4f81" stroke="#d63b6c" stroke-width="2" />
-      </svg>
-    </div>
-    <h1>¿Quieres ser mi novia? 🥺❤️</h1>
-    <button onclick="respuesta(true); showSparkles()">¡Sí, quiero! 💘</button>
-    <button onclick="respuesta(false)">Ay, no sé... 🙈</button>
-  </div>
+    lanzarGlobos();
+    lanzarConfetti();
+  }
 
-  <div class="card hidden" id="final">
-    <h1 id="respuestaTexto"></h1>
-    <p>Gracias por leer esto, Fernanda 💖<br>Te prometo que pondré lo mejor de mí cada día 💫</p>
-  </div>
+  function lanzarGlobos() {
+    for (let i = 0; i < 10; i++) {
+      let balloon = document.createElement("div");
+      balloon.className = "balloon";
+      balloon.style.left = Math.random() * window.innerWidth + "px";
+      balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+      document.body.appendChild(balloon);
 
-  <!-- Lógica -->
-  <script>
-    const music = document.getElementById('bgMusic');
-    music.currentTime = 1380;
-    music.play().catch(() => {
-      document.addEventListener('click', () => {
-        music.currentTime = 1380;
-        music.play();
-      }, { once: true });
-    });
-
-    function nextStep() {
-      document.getElementById(`step${step}`).classList.add('hidden');
-      step++;
-      document.getElementById(`step${step}`).classList.remove('hidden');
+      setTimeout(() => {
+        balloon.remove();
+      }, 6000);
     }
+  }
 
-    function respuesta(si) {
-      document.getElementById(`step${step}`).classList.add("hidden");
-      document.getElementById("final").classList.remove("hidden");
-      document.getElementById("respuestaTexto").innerText =
-        si ? "¡Sabía que dirías que sí! 💍✨" : "No importa la respuesta, Fernanda, tú sigues siendo alguien muy especial para mí 💫";
+  const canvas = document.getElementById("confetti-canvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let confetti = [];
+
+  function lanzarConfetti() {
+    for (let i = 0; i < 100; i++) {
+      confetti.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        r: Math.random() * 6 + 4,
+        d: Math.random() * 5 + 2,
+        color: `hsl(${Math.random() * 360}, 100%, 60%)`,
+        tilt: Math.floor(Math.random() * 10) - 5
+      });
     }
+    dibujarConfetti();
+  }
 
-    function checkRiddle(inputId, correctAnswer, currentStepId, nextStepId) {
-      const input = document.getElementById(inputId).value.trim().toLowerCase();
-      if (input === correctAnswer) {
-        document.getElementById(currentStepId).classList.add('hidden');
-        document.getElementById(nextStepId).classList.remove('hidden');
-        step++;
-      } else {
-        alert("Mmm... inténtalo de nuevo. ¡Tú puedes! 💡");
+  function dibujarConfetti() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < confetti.length; i++) {
+      let c = confetti[i];
+      ctx.beginPath();
+      ctx.lineWidth = c.r / 2;
+      ctx.strokeStyle = c.color;
+      ctx.moveTo(c.x + c.tilt + c.r / 4, c.y);
+      ctx.lineTo(c.x + c.tilt, c.y + c.tilt + c.r / 4);
+      ctx.stroke();
+    }
+    moverConfetti();
+  }
+
+  function moverConfetti() {
+    for (let i = 0; i < confetti.length; i++) {
+      let c = confetti[i];
+      c.y += c.d;
+      c.x += Math.sin(c.d);
+      if (c.y > canvas.height) {
+        c.y = -10;
       }
     }
+    requestAnimationFrame(dibujarConfetti);
+  }
+</script>
 
-    function showSparkles() {
-      for (let i = 0; i < 30; i++) {
-        const sparkle = document.createElement('div');
-        sparkle.classList.add('sparkle');
-        sparkle.style.left = Math.random() * 100 + 'vw';
-        sparkle.style.top = Math.random() * 100 + 'vh';
-        sparkle.style.animationDelay = (Math.random() * 0.5) + 's';
-        document.body.appendChild(sparkle);
-        setTimeout(() => sparkle.remove(), 1000);
-      }
-    }
-
-    let step = 1;
-  </script>
 </body>
 </html>
